@@ -83,7 +83,7 @@ test_that("vrv_chr() handles NULL initialization", {
   error <- isolate(extract_error(char_vrv_null_bad, capture = FALSE))
   expect_error(
     {
-      rlang::cnd_signal(error)
+      signalCondition(error)
     },
     class = "stbl-error-bad_null"
   )
