@@ -24,12 +24,13 @@ test_that("vrv_dbl() sets value to default when invalid (size)", {
   dbl_vrv(c(1.1, 2.2))
   expect_equal(isolate(dbl_vrv()), 9.9)
   expect_true(isolate(dbl_vrv$is_default()))
-  error <- isolate(dbl_vrv$error())
-  expect_s3_class(error, "captured-stbl-error-size_too_large")
-  class(error) <- sub("captured-", "", class(error))
-  expect_error({
-    signalCondition(error)
-  })
+  error <- isolate(extract_error(dbl_vrv, capture = FALSE))
+  expect_error(
+    {
+      signalCondition(error)
+    },
+    class = "stbl-error-size_too_large"
+  )
   expect_snapshot(
     {
       signalCondition(error)
@@ -47,12 +48,13 @@ test_that("vrv_dbl() sets value to default when invalid (min_value)", {
   dbl_vrv(4)
   expect_equal(isolate(dbl_vrv()), 9.9)
   expect_true(isolate(dbl_vrv$is_default()))
-  error <- isolate(dbl_vrv$error())
-  expect_s3_class(error, "captured-stbl-error-outside_range")
-  class(error) <- sub("captured-", "", class(error))
-  expect_error({
-    signalCondition(error)
-  })
+  error <- isolate(extract_error(dbl_vrv, capture = FALSE))
+  expect_error(
+    {
+      signalCondition(error)
+    },
+    class = "stbl-error-outside_range"
+  )
   expect_snapshot(
     {
       signalCondition(error)
@@ -70,12 +72,13 @@ test_that("vrv_dbl() sets value to default when invalid (max_value)", {
   dbl_vrv(16)
   expect_equal(isolate(dbl_vrv()), 9.9)
   expect_true(isolate(dbl_vrv$is_default()))
-  error <- isolate(dbl_vrv$error())
-  expect_s3_class(error, "captured-stbl-error-outside_range")
-  class(error) <- sub("captured-", "", class(error))
-  expect_error({
-    signalCondition(error)
-  })
+  error <- isolate(extract_error(dbl_vrv, capture = FALSE))
+  expect_error(
+    {
+      signalCondition(error)
+    },
+    class = "stbl-error-outside_range"
+  )
   expect_snapshot(
     {
       signalCondition(error)
@@ -133,12 +136,13 @@ test_that("vrv_dbl() handles NULL initialization", {
   )
   expect_equal(isolate(dbl_vrv_null_bad()), 9.9)
   expect_true(isolate(dbl_vrv_null_bad$is_default()))
-  error <- isolate(dbl_vrv_null_bad$error())
-  expect_s3_class(error, "captured-stbl-error-bad_null")
-  class(error) <- sub("captured-", "", class(error))
-  expect_error({
-    signalCondition(error)
-  })
+  error <- isolate(extract_error(dbl_vrv_null_bad, capture = FALSE))
+  expect_error(
+    {
+      signalCondition(error)
+    },
+    class = "stbl-error-bad_null"
+  )
   expect_snapshot(
     {
       signalCondition(error)
@@ -166,12 +170,13 @@ test_that("vrv_dbl() handles being set to NULL", {
   dbl_vrv_null_bad(NULL)
   expect_equal(isolate(dbl_vrv_null_bad()), 9.9)
   expect_true(isolate(dbl_vrv_null_bad$is_default()))
-  error <- isolate(dbl_vrv_null_bad$error())
-  expect_s3_class(error, "captured-stbl-error-bad_null")
-  class(error) <- sub("captured-", "", class(error))
-  expect_error({
-    signalCondition(error)
-  })
+  error <- isolate(extract_error(dbl_vrv_null_bad, capture = FALSE))
+  expect_error(
+    {
+      signalCondition(error)
+    },
+    class = "stbl-error-bad_null"
+  )
   expect_snapshot(
     {
       signalCondition(error)
@@ -205,12 +210,13 @@ test_that("vrv_dbl_scalar() sets value to default when invalid (size)", {
   dbl_vrv(c(1.1, 2.2))
   expect_equal(isolate(dbl_vrv()), 9.9)
   expect_true(isolate(dbl_vrv$is_default()))
-  error <- isolate(dbl_vrv$error())
-  expect_s3_class(error, "captured-stbl-error-non_scalar")
-  class(error) <- sub("captured-", "", class(error))
-  expect_error({
-    signalCondition(error)
-  })
+  error <- isolate(extract_error(dbl_vrv, capture = FALSE))
+  expect_error(
+    {
+      signalCondition(error)
+    },
+    class = "stbl-error-non_scalar"
+  )
   expect_snapshot(
     {
       signalCondition(error)
@@ -228,12 +234,13 @@ test_that("vrv_dbl_scalar() sets value to default when invalid (max_value)", {
   dbl_vrv(16)
   expect_equal(isolate(dbl_vrv()), 9.9)
   expect_true(isolate(dbl_vrv$is_default()))
-  error <- isolate(dbl_vrv$error())
-  expect_s3_class(error, "captured-stbl-error-outside_range")
-  class(error) <- sub("captured-", "", class(error))
-  expect_error({
-    signalCondition(error)
-  })
+  error <- isolate(extract_error(dbl_vrv, capture = FALSE))
+  expect_error(
+    {
+      signalCondition(error)
+    },
+    class = "stbl-error-outside_range"
+  )
   expect_snapshot(
     {
       signalCondition(error)
@@ -259,12 +266,13 @@ test_that("vrv_dbl_scalar() handles NULL initialization", {
   )
   expect_equal(isolate(dbl_vrv_null_bad()), 9.9)
   expect_true(isolate(dbl_vrv_null_bad$is_default()))
-  error <- isolate(dbl_vrv_null_bad$error())
-  expect_s3_class(error, "captured-stbl-error-bad_null")
-  class(error) <- sub("captured-", "", class(error))
-  expect_error({
-    signalCondition(error)
-  })
+  error <- isolate(extract_error(dbl_vrv_null_bad, capture = FALSE))
+  expect_error(
+    {
+      signalCondition(error)
+    },
+    class = "stbl-error-bad_null"
+  )
   expect_snapshot(
     {
       signalCondition(error)
@@ -292,12 +300,13 @@ test_that("vrv_dbl_scalar() handles zero-length double vector", {
   dbl_vrv_zero_bad(double())
   expect_equal(isolate(dbl_vrv_zero_bad()), 9.9)
   expect_true(isolate(dbl_vrv_zero_bad$is_default()))
-  error <- isolate(dbl_vrv_zero_bad$error())
-  expect_s3_class(error, "captured-stbl-error-bad_empty")
-  class(error) <- sub("captured-", "", class(error))
-  expect_error({
-    signalCondition(error)
-  })
+  error <- isolate(extract_error(dbl_vrv_zero_bad, capture = FALSE))
+  expect_error(
+    {
+      signalCondition(error)
+    },
+    class = "stbl-error-bad_empty"
+  )
   expect_snapshot(
     {
       signalCondition(error)
