@@ -24,12 +24,13 @@ test_that("vrv_lgl() sets value to default when invalid (size)", {
   lgl_vrv(c(TRUE, TRUE))
   expect_false(isolate(lgl_vrv()))
   expect_true(isolate(lgl_vrv$is_default()))
-  error <- isolate(lgl_vrv$error())
-  expect_s3_class(error, "captured-stbl-error-size_too_large")
-  class(error) <- sub("captured-", "", class(error))
-  expect_error({
-    signalCondition(error)
-  })
+  error <- isolate(extract_error(lgl_vrv, capture = FALSE))
+  expect_error(
+    {
+      signalCondition(error)
+    },
+    class = "stbl-error-size_too_large"
+  )
   expect_snapshot(
     {
       signalCondition(error)
@@ -55,12 +56,13 @@ test_that("vrv_lgl() handles NULL initialization", {
   )
   expect_false(isolate(lgl_vrv_null_bad()))
   expect_true(isolate(lgl_vrv_null_bad$is_default()))
-  error <- isolate(lgl_vrv_null_bad$error())
-  expect_s3_class(error, "captured-stbl-error-bad_null")
-  class(error) <- sub("captured-", "", class(error))
-  expect_error({
-    signalCondition(error)
-  })
+  error <- isolate(extract_error(lgl_vrv_null_bad, capture = FALSE))
+  expect_error(
+    {
+      signalCondition(error)
+    },
+    class = "stbl-error-bad_null"
+  )
   expect_snapshot(
     {
       signalCondition(error)
@@ -88,12 +90,13 @@ test_that("vrv_lgl() handles being set to NULL", {
   lgl_vrv_null_bad(NULL)
   expect_false(isolate(lgl_vrv_null_bad()))
   expect_true(isolate(lgl_vrv_null_bad$is_default()))
-  error <- isolate(lgl_vrv_null_bad$error())
-  expect_s3_class(error, "captured-stbl-error-bad_null")
-  class(error) <- sub("captured-", "", class(error))
-  expect_error({
-    signalCondition(error)
-  })
+  error <- isolate(extract_error(lgl_vrv_null_bad, capture = FALSE))
+  expect_error(
+    {
+      signalCondition(error)
+    },
+    class = "stbl-error-bad_null"
+  )
   expect_snapshot(
     {
       signalCondition(error)
@@ -127,12 +130,13 @@ test_that("vrv_lgl_scalar() sets value to default when invalid (size)", {
   lgl_vrv(c(TRUE, TRUE))
   expect_false(isolate(lgl_vrv()))
   expect_true(isolate(lgl_vrv$is_default()))
-  error <- isolate(lgl_vrv$error())
-  expect_s3_class(error, "captured-stbl-error-non_scalar")
-  class(error) <- sub("captured-", "", class(error))
-  expect_error({
-    signalCondition(error)
-  })
+  error <- isolate(extract_error(lgl_vrv, capture = FALSE))
+  expect_error(
+    {
+      signalCondition(error)
+    },
+    class = "stbl-error-non_scalar"
+  )
   expect_snapshot(
     {
       signalCondition(error)
@@ -158,12 +162,13 @@ test_that("vrv_lgl_scalar() handles NULL initialization", {
   )
   expect_false(isolate(lgl_vrv_null_bad()))
   expect_true(isolate(lgl_vrv_null_bad$is_default()))
-  error <- isolate(lgl_vrv_null_bad$error())
-  expect_s3_class(error, "captured-stbl-error-bad_null")
-  class(error) <- sub("captured-", "", class(error))
-  expect_error({
-    signalCondition(error)
-  })
+  error <- isolate(extract_error(lgl_vrv_null_bad, capture = FALSE))
+  expect_error(
+    {
+      signalCondition(error)
+    },
+    class = "stbl-error-bad_null"
+  )
   expect_snapshot(
     {
       signalCondition(error)
@@ -191,12 +196,13 @@ test_that("vrv_lgl_scalar() handles zero-length logical vector", {
   lgl_vrv_zero_bad(logical())
   expect_false(isolate(lgl_vrv_zero_bad()))
   expect_true(isolate(lgl_vrv_zero_bad$is_default()))
-  error <- isolate(lgl_vrv_zero_bad$error())
-  expect_s3_class(error, "captured-stbl-error-bad_empty")
-  class(error) <- sub("captured-", "", class(error))
-  expect_error({
-    signalCondition(error)
-  })
+  error <- isolate(extract_error(lgl_vrv_zero_bad, capture = FALSE))
+  expect_error(
+    {
+      signalCondition(error)
+    },
+    class = "stbl-error-bad_empty"
+  )
   expect_snapshot(
     {
       signalCondition(error)

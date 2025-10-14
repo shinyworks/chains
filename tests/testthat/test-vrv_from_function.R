@@ -21,14 +21,12 @@ test_that("vrv_from_function generates reactives that generate errors as expecte
   my_chr_rctv(mean)
   expect_null(shiny::isolate(my_chr_rctv()))
   expect_true(isolate(my_chr_rctv$is_default()))
-  error <- isolate(my_chr_rctv$error())
-  expect_s3_class(error, "captured-error")
-  class(error) <- sub("captured-", "", class(error))
+  error <- isolate(extract_error(my_chr_rctv, capture = FALSE))
   expect_error(
     {
       signalCondition(error)
     },
-    "cannot coerce"
+    "cannot coerce type"
   )
   expect_snapshot(
     {
