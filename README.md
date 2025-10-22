@@ -2,7 +2,7 @@
 
 <!-- README.md is generated from README.qmd. Please edit that file -->
 
-# chains
+# chains <a href="https://chains.shinyworks.org"><img src="man/figures/logo.svg" align="right" width="250" alt="chains package logo, the word chains constructed from chain links" /></a>
 
 <!-- badges: start -->
 

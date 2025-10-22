@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# chains
+# chains <a href="https://chains.shinyworks.org"><img src="man/figures/logo.svg" align="right" width="250" alt="chains package logo, the word chains constructed from chain links" /></a>
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
