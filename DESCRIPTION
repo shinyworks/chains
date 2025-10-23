@@ -1,6 +1,6 @@
 Package: chains
 Title: Complex Reactive Values for 'shiny'
-Version: 0.0.0.9016
+Version: 0.0.0.9017
 Authors@R:
     person("Jon", "Harmon", , "jonthegeek@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-4781-4346"))
@@ -23,7 +23,7 @@ Suggests:
     testthat (>= 3.0.0)
 Remotes:
     stbl=url::https://wranglezone.r-universe.dev/src/contrib/stbl_0.2.0.9004.tar.gz
-Config/Needs/website: rmarkdown, quarto, shinylive
+Config/Needs/website: rmarkdown, quarto, shinylive, fs
 Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US

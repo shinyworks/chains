@@ -40,6 +40,21 @@ jobs:
         shell: Rscript {0}
         run: |
           pak::pak("posit-dev/r-shinylive")
+
+      # Build slide decks in inst/slides. Eventually this should also update
+      # _pkgdown.yml
+      - name: Build slides
+        shell: Rscript {0}
+        run: |
+          source_dir <- "inst/slides"
+          dest_dir <- "pkgdown/assets"
+          fs::dir_copy(source_dir, dest_dir, overwrite = TRUE)
+          slide_qmds <- fs::dir_ls(dest_dir, glob = "*.qmd")
+          for (qmd_file in slide_qmds) {
+            quarto::quarto_render(qmd_file)
+          }
+          fs::file_delete(slide_qmds)
+
       # Change the build directory to `_site`
       - name: Build site
         shell: Rscript {0}

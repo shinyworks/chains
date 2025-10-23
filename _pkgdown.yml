@@ -10,3 +10,14 @@ template:
 development:
   mode: auto
 lang: en-US
+navbar:
+  structure:
+    left:  [intro, reference, articles, slides, tutorials, news]
+    right: [search, github, lightswitch]
+  components:
+    slides:
+      text: Slides
+      menu:
+      - text: Introduction
+        href: chains-introduction.html
+        target: _blank

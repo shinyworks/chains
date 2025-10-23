@@ -1,0 +1,48 @@
+.reveal .footer {
+  font-size: 30px !important;
+}
+
+.reveal .slide-logo {
+  max-height: unset !important;
+  height: 70px !important;
+}
+
+.reveal #title-slide {
+  display: flex !important;
+  align-items: center; /* Vertically center the content */
+  justify-content: space-between; /* Horizontally space out content */
+}
+
+.reveal h1.title {
+  font-size: 2em;
+  display: flex;
+  align-items: center; /* Vertically center the content */
+}
+
+.reveal h1.title p {
+  display: flex;
+  align-items: center; /* Vertically center the content */
+}
+
+.reveal .slide .compact ul li {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.reveal .emoji ul {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.reveal .emoji ul li {
+  position: relative;
+  padding-left: 0;
+  line-height: 1.2em;
+  text-indent: -1.6em;
+  margin-left: 1.6em;
+}
+
+.right {
+  float: right;
+}
