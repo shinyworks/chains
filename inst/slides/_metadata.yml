@@ -1,0 +1,12 @@
+css: slides.css
+execute:
+  eval: false
+  echo: true
+format:
+  revealjs:
+    theme: dark
+    logo: images/logo.svg
+    footer: <a href="https://chains.shiny.works">chains.shiny.works</a>
+    link-external-newwindow: true
+    transition: slide
+    incremental: false

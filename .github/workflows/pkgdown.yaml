@@ -51,7 +51,9 @@ jobs:
           fs::dir_copy(source_dir, dest_dir, overwrite = TRUE)
           slide_qmds <- fs::dir_ls(dest_dir, glob = "*.qmd")
           for (qmd_file in slide_qmds) {
-            quarto::quarto_render(qmd_file)
+            file_base <- fs::path_ext_remove(fs::path_file(qmd_file))
+            output_file <- paste0("slides-", file_base, ".html")
+            quarto::quarto_render(qmd_file, output_file = output_file)
           }
           fs::file_delete(slide_qmds)
 
