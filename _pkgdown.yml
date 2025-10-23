@@ -19,5 +19,5 @@ navbar:
       text: Slides
       menu:
       - text: Introduction
-        href: chains-introduction.html
+        href: slides-introduction.html
         target: _blank

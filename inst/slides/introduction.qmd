@@ -1,18 +1,6 @@
 ---
 title: |
   <img src="images/logo.svg" alt="chains package logo, the word chains constructed from chain links" width="30%" style="float: right;">Complex reactive values for Shiny
-css: slides.css
-execute:
-  eval: false
-  echo: true
-format:
-  revealjs: 
-    theme: dark
-    logo: images/logo.svg
-    footer: <a href="https://chains.shinyworks.org">chains.shinyworks.org</a>
-    link-external-newwindow: true
-    transition: slide
-    incremental: false
 ---
 
 # What's the problem?
