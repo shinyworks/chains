@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      SHINYLIVE_ASSETS_VERSION: 0.10.5
+      SHINYLIVE_ASSETS_VERSION: 0.10.8
       WEBR_IMAGE: v0.5.5
 
     steps:
