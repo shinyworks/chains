@@ -13,7 +13,7 @@ BugReports: https://github.com/shinyworks/chains/issues
 Imports:
     rlang,
     shiny,
-    stbl (>= 0.2.0.9002)
+    stbl (>= 0.3.0)
 Suggests:
     covr,
     knitr,
@@ -21,8 +21,6 @@ Suggests:
     rmarkdown,
     shinytest2,
     testthat (>= 3.0.0)
-Remotes:
-    stbl=url::https://wranglezone.r-universe.dev/src/contrib/stbl_0.2.0.9004.tar.gz
 Config/Needs/website: rmarkdown, quarto, shinylive, fs
 Config/testthat/edition: 3
 Encoding: UTF-8

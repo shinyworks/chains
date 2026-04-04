@@ -43,7 +43,8 @@ test_that("vrv_lgl() handles NULL initialization", {
   # allow_null = TRUE (default)
   lgl_vrv_null_ok <- vrv_lgl(
     value = NULL,
-    default = FALSE
+    default = FALSE,
+    allow_null = TRUE
   )
   expect_null(isolate(lgl_vrv_null_ok()))
   expect_false(isolate(lgl_vrv_null_ok$is_default()))
@@ -75,7 +76,8 @@ test_that("vrv_lgl() handles being set to NULL", {
   # allow_null = TRUE (default)
   lgl_vrv_null_ok <- vrv_lgl(
     value = TRUE,
-    default = FALSE
+    default = FALSE,
+    allow_null = TRUE
   )
   lgl_vrv_null_ok(NULL)
   expect_null(isolate(lgl_vrv_null_ok()))
@@ -146,15 +148,16 @@ test_that("vrv_lgl_scalar() sets value to default when invalid (size)", {
 })
 
 test_that("vrv_lgl_scalar() handles NULL initialization", {
-  # allow_null = TRUE (default)
+  # allow_null = TRUE
   lgl_vrv_null_ok <- vrv_lgl_scalar(
     value = NULL,
-    default = FALSE
+    default = FALSE,
+    allow_null = TRUE
   )
   expect_null(isolate(lgl_vrv_null_ok()))
   expect_false(isolate(lgl_vrv_null_ok$is_default()))
 
-  # allow_null = FALSE
+  # allow_null = FALSE (default)
   lgl_vrv_null_bad <- vrv_lgl_scalar(
     value = NULL,
     default = FALSE,
@@ -178,16 +181,17 @@ test_that("vrv_lgl_scalar() handles NULL initialization", {
 })
 
 test_that("vrv_lgl_scalar() handles zero-length logical vector", {
-  # allow_zero_length = TRUE (default)
+  # allow_zero_length = TRUE
   lgl_vrv_zero_ok <- vrv_lgl_scalar(
     value = TRUE,
-    default = FALSE
+    default = FALSE,
+    allow_zero_length = TRUE
   )
   lgl_vrv_zero_ok(logical())
   expect_equal(isolate(lgl_vrv_zero_ok()), logical())
   expect_false(isolate(lgl_vrv_zero_ok$is_default()))
 
-  # allow_zero_length = FALSE
+  # allow_zero_length = FALSE (default)
   lgl_vrv_zero_bad <- vrv_lgl_scalar(
     value = TRUE,
     default = FALSE,

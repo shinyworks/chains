@@ -4,9 +4,9 @@
       signalCondition(error)
     Condition
       Error in `validation_fn()`:
-      ! All values of `.vrv()` must be present in `levels` or `to_na`.
-      i Disallowed values: A1
-      i Allowed values: B1
+      ! Each value of `.vrv()` must be in the expected levels.
+      i Allowed levels: "B1".
+      x Unexpected values: "A1".
 
 # vrv_fct_scalar() sets value to default when invalid (levels)
 
@@ -14,9 +14,9 @@
       signalCondition(error)
     Condition
       Error in `validation_fn()`:
-      ! All values of `.vrv()` must be present in `levels` or `to_na`.
-      i Disallowed values: A1
-      i Allowed values: B1
+      ! Each value of `.vrv()` must be in the expected levels.
+      i Allowed levels: "B1".
+      x Unexpected values: "A1".
 
 # vrv_fct_scalar() sets value to default when invalid (size)
 
