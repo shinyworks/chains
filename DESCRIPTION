@@ -15,6 +15,7 @@ Imports:
     shiny,
     stbl (>= 0.3.0)
 Suggests:
+    astgrepr,
     covr,
     knitr,
     pkgload,

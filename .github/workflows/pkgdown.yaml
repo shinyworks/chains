@@ -3,12 +3,8 @@
 on:
   push:
     branches: [main]
-    paths-ignore:
-      - '.github/ai/issues.json'
   pull_request:
     branches: [main]
-    paths-ignore:
-      - '.github/ai/issues.json'
   release:
     types: [published]
   workflow_dispatch:
@@ -18,24 +14,29 @@ name: R Wasm & pkgdown deploy
 jobs:
   build-site:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/api2r/pkgskills-ci:release
+    # Only restrict concurrency for non-PR jobs
+    concurrency:
+      group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       SHINYLIVE_ASSETS_VERSION: 0.10.5
       WEBR_IMAGE: v0.5.5
+    permissions:
+      contents: write
+      pull-requests: write
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-      # Usual steps for generating a pkgdown website
-      - uses: r-lib/actions/setup-pandoc@v2
-      - uses: r-lib/actions/setup-r@v2
+      - uses: ./.github/workflows/install
         with:
-          use-public-rspm: true
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          extra-packages: any::pkgdown, local::.
+          use-container: "true"
+          token: ${{ secrets.GITHUB_TOKEN }}
           needs: website
+          extra-packages: any::pkgdown gilead-biostats/qcthat local::. any::glue
+
       - name: Install dev shinylive
         shell: Rscript {0}
         run: |
@@ -78,7 +79,7 @@ jobs:
       # Upload an artifact that will work with GitHub Pages
       - name: Upload Pages artifact
         if: github.event_name != 'pull_request'
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: "_site"
 
@@ -95,4 +96,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
