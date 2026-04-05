@@ -20,8 +20,8 @@ vrv_lgl_scalar(
   value = NULL,
   default = NULL,
   label = NULL,
-  allow_null = TRUE,
-  allow_zero_length = TRUE,
+  allow_null = FALSE,
+  allow_zero_length = FALSE,
   allow_na = TRUE,
   env = rlang::caller_env()
 )

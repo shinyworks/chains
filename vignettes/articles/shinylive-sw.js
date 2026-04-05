@@ -1,5 +1,5 @@
-// Shinylive 0.10.5
-// Copyright 2025 Posit, PBC
+// Shinylive 0.10.8
+// Copyright 2026 Posit, PBC
 var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
   get: (a, b2) => (typeof require !== "undefined" ? require : a)[b2]
 }) : x)(function(x) {
@@ -1982,7 +1982,7 @@ function asgiToRes(res, body) {
 // src/shinylive-sw.ts
 var useCaching = false;
 var cacheName = "::shinyliveServiceworker";
-var version = "v9";
+var version = "v10";
 function addCoiHeaders(resp) {
   const headers = new Headers(resp.headers);
   headers.set("Cross-Origin-Embedder-Policy", "require-corp");

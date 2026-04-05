@@ -123,7 +123,8 @@ test_that("vrv_dbl() handles NULL initialization", {
   # allow_null = TRUE (default)
   dbl_vrv_null_ok <- vrv_dbl(
     value = NULL,
-    default = 9.9
+    default = 9.9,
+    allow_null = TRUE
   )
   expect_null(isolate(dbl_vrv_null_ok()))
   expect_false(isolate(dbl_vrv_null_ok$is_default()))
@@ -155,7 +156,8 @@ test_that("vrv_dbl() handles being set to NULL", {
   # allow_null = TRUE (default)
   dbl_vrv_null_ok <- vrv_dbl(
     value = 1.1,
-    default = 9.9
+    default = 9.9,
+    allow_null = TRUE
   )
   dbl_vrv_null_ok(NULL)
   expect_null(isolate(dbl_vrv_null_ok()))
@@ -250,15 +252,16 @@ test_that("vrv_dbl_scalar() sets value to default when invalid (max_value)", {
 })
 
 test_that("vrv_dbl_scalar() handles NULL initialization", {
-  # allow_null = TRUE (default)
+  # allow_null = TRUE
   dbl_vrv_null_ok <- vrv_dbl_scalar(
     value = NULL,
-    default = 9.9
+    default = 9.9,
+    allow_null = TRUE
   )
   expect_null(isolate(dbl_vrv_null_ok()))
   expect_false(isolate(dbl_vrv_null_ok$is_default()))
 
-  # allow_null = FALSE
+  # allow_null = FALSE (default)
   dbl_vrv_null_bad <- vrv_dbl_scalar(
     value = NULL,
     default = 9.9,
@@ -282,16 +285,17 @@ test_that("vrv_dbl_scalar() handles NULL initialization", {
 })
 
 test_that("vrv_dbl_scalar() handles zero-length double vector", {
-  # allow_zero_length = TRUE (default)
+  # allow_zero_length = TRUE
   dbl_vrv_zero_ok <- vrv_dbl_scalar(
     value = 1.1,
-    default = 9.9
+    default = 9.9,
+    allow_zero_length = TRUE
   )
   dbl_vrv_zero_ok(double())
   expect_equal(isolate(dbl_vrv_zero_ok()), double())
   expect_false(isolate(dbl_vrv_zero_ok$is_default()))
 
-  # allow_zero_length = FALSE
+  # allow_zero_length = FALSE (default)
   dbl_vrv_zero_bad <- vrv_dbl_scalar(
     value = 1.1,
     default = 9.9,

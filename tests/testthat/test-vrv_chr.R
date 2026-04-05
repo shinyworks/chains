@@ -67,7 +67,8 @@ test_that("vrv_chr() handles NULL initialization", {
   # allow_null = TRUE (default)
   char_vrv_null_ok <- vrv_chr(
     value = NULL,
-    default = "default"
+    default = "default",
+    allow_null = TRUE
   )
   expect_null(isolate(char_vrv_null_ok()))
   expect_false(isolate(char_vrv_null_ok$is_default()))
@@ -99,7 +100,8 @@ test_that("vrv_chr() handles being set to NULL", {
   # allow_null = TRUE (default)
   char_vrv_null_ok <- vrv_chr(
     value = "a",
-    default = "default"
+    default = "default",
+    allow_null = TRUE
   )
   char_vrv_null_ok(NULL)
   expect_null(isolate(char_vrv_null_ok()))
@@ -195,15 +197,16 @@ test_that("vrv_chr_scalar() sets value to default when invalid (regex)", {
 })
 
 test_that("vrv_chr_scalar() handles NULL initialization", {
-  # allow_null = TRUE (default)
+  # allow_null = TRUE
   char_vrv_null_ok <- vrv_chr_scalar(
     value = NULL,
-    default = "default"
+    default = "default",
+    allow_null = TRUE
   )
   expect_null(isolate(char_vrv_null_ok()))
   expect_false(isolate(char_vrv_null_ok$is_default()))
 
-  # allow_null = FALSE
+  # allow_null = FALSE (default)
   char_vrv_null_bad <- vrv_chr_scalar(
     value = NULL,
     default = "default",
@@ -227,16 +230,17 @@ test_that("vrv_chr_scalar() handles NULL initialization", {
 })
 
 test_that("vrv_chr_scalar() handles zero-length character vector", {
-  # allow_zero_length = TRUE (default)
+  # allow_zero_length = TRUE
   char_vrv_zero_ok <- vrv_chr_scalar(
     value = "a",
-    default = "default"
+    default = "default",
+    allow_zero_length = TRUE
   )
   char_vrv_zero_ok(character())
   expect_equal(isolate(char_vrv_zero_ok()), character())
   expect_false(isolate(char_vrv_zero_ok$is_default()))
 
-  # allow_zero_length = FALSE
+  # allow_zero_length = FALSE (default)
   char_vrv_zero_bad <- vrv_chr_scalar(
     value = "a",
     default = "default",

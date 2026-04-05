@@ -3,12 +3,8 @@
 on:
   push:
     branches: [main]
-    paths-ignore:
-      - '.github/ai/issues.json'
   pull_request:
     branches: [main]
-    paths-ignore:
-      - '.github/ai/issues.json'
   release:
     types: [published]
   workflow_dispatch:
@@ -20,12 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      SHINYLIVE_ASSETS_VERSION: 0.10.5
+      SHINYLIVE_ASSETS_VERSION: 0.10.8
       WEBR_IMAGE: v0.5.5
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       # Usual steps for generating a pkgdown website
       - uses: r-lib/actions/setup-pandoc@v2
@@ -78,7 +74,7 @@ jobs:
       # Upload an artifact that will work with GitHub Pages
       - name: Upload Pages artifact
         if: github.event_name != 'pull_request'
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: "_site"
 
@@ -95,4 +91,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

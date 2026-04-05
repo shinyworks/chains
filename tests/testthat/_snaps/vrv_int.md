@@ -13,8 +13,8 @@
       signalCondition(error)
     Condition
       Error:
-      ! Values of `.vrv()` must be >= 5.
-      x Values are too low at locations 1.
+      ! `.vrv()` must be >= 5.
+      x 4 is too low.
 
 # vrv_int() sets value to default when invalid (max_value)
 
@@ -22,8 +22,8 @@
       signalCondition(error)
     Condition
       Error:
-      ! Values of `.vrv()` must be <= 15.
-      x Values are too high at locations 1.
+      ! `.vrv()` must be <= 15.
+      x 16 is too high.
 
 # vrv_int() handles NULL initialization
 
@@ -56,8 +56,8 @@
       signalCondition(error)
     Condition
       Error:
-      ! Values of `.vrv()` must be <= 15.
-      x Values are too high at locations 1.
+      ! `.vrv()` must be <= 15.
+      x 16 is too high.
 
 # vrv_int_scalar() handles NULL initialization
 
